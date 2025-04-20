@@ -3,14 +3,26 @@ package dev.tinyflow.core.test;
 import com.agentsflex.core.chain.*;
 import com.agentsflex.llm.openai.OpenAILlm;
 import dev.tinyflow.core.Tinyflow;
+import org.testcontainers.shaded.org.apache.commons.io.IOUtils;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TinyflowTest {
 
-    //    static String data1 = "";
-    static String data1 = "{\"nodes\":[{\"id\":\"2\",\"type\":\"llmNode\",\"data\":{\"title\":\"大模型\",\"description\":\"处理大模型相关问题\",\"expand\":true,\"outputDefs\":[{\"id\":\"pyiig8ntGWZhVdVz\",\"dataType\":\"Object\",\"name\":\"param\",\"children\":[{\"id\":\"1\",\"name\":\"newParam1\",\"dataType\":\"String\"},{\"id\":\"2\",\"name\":\"newParam2\",\"dataType\":\"String\"}]}]},\"position\":{\"x\":600,\"y\":50},\"measured\":{\"width\":334,\"height\":687},\"selected\":false},{\"id\":\"3\",\"type\":\"startNode\",\"data\":{\"title\":\"开始节点\",\"description\":\"开始定义输入参数\",\"expand\":true,\"parameters\":[{\"id\":\"Q37GZ5KKvPpCD7Cs\",\"name\":\"name\"}]},\"position\":{\"x\":150,\"y\":25},\"measured\":{\"width\":306,\"height\":209},\"selected\":false},{\"id\":\"4\",\"type\":\"endNode\",\"data\":{\"title\":\"结束节点\",\"description\":\"结束定义输出参数\",\"expand\":true,\"outputDefs\":[{\"id\":\"z7fOwoTjQ7AbUJdm\",\"ref\":\"3.name\",\"name\":\"test\"}]},\"position\":{\"x\":994,\"y\":218},\"measured\":{\"width\":334,\"height\":209},\"selected\":false,\"dragging\":false}],\"edges\":[{\"markerEnd\":{\"type\":\"arrowclosed\",\"width\":20,\"height\":20},\"source\":\"3\",\"target\":\"2\",\"id\":\"xy-edge__3-2\"},{\"markerEnd\":{\"type\":\"arrowclosed\",\"width\":20,\"height\":20},\"source\":\"2\",\"target\":\"4\",\"id\":\"xy-edge__2-4\"}],\"viewport\":{\"x\":250,\"y\":100,\"zoom\":1}}";
+    static String data1 = "";
+
+    static {
+        try (InputStream inputStream = TinyflowTest.class.getClassLoader().getResourceAsStream("test.json")) {
+            if (inputStream == null) {
+                throw new RuntimeException("test.json not found in resources folder");
+            }
+            data1 = IOUtils.toString(inputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         Tinyflow tinyflow = new Tinyflow(data1);

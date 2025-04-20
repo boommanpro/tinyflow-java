@@ -1,0 +1,59 @@
+{
+  "param": {
+    "a": 123,
+    "b": "123"
+  },
+  "schema": {
+    "id": "code_T5DNl",
+    "type": "code",
+    "meta": {
+      "position": {
+        "x": 614.3820904384166,
+        "y": 363.9269239259368
+      }
+    },
+    "data": {
+      "title": "Code_1",
+      "description": "数据过滤",
+      "config": {
+        "language": "aviator",
+        "code": "return {\n    \"a\":a,\n    \"b\":b\n}"
+      },
+      "inputs": [
+        {
+          "name": "a",
+          "input": {
+            "type": "string",
+            "value": {
+              "type": "literal",
+              "content": "123"
+            }
+          }
+        },
+        {
+          "name": "aa",
+          "input": {
+            "type": "string",
+            "value": {
+              "type": "literal",
+              "content": "123"
+            }
+          }
+        }
+      ],
+      "outputs": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string",
+            "default": "a"
+          },
+          "b": {
+            "type": "string",
+            "default": "b"
+          }
+        }
+      }
+    }
+  }
+}

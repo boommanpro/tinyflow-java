@@ -9,6 +9,7 @@
         <version>1.0.0-rc.8</version>
     </parent>
 
+    <version>1.1.0</version>
     <name>tinyflow-java-core</name>
     <artifactId>tinyflow-java-core</artifactId>
 
@@ -27,6 +28,11 @@
         <dependency>
             <groupId>com.jfinal</groupId>
             <artifactId>enjoy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.35</version>
         </dependency>
 
     </dependencies>

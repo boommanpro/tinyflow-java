@@ -1,0 +1,201 @@
+{
+  "nodes": [
+    {
+      "id": "node_JuUiJQxRA5s9dA6R",
+      "position": {
+        "x": -3,
+        "y": 128
+      },
+      "data": {
+        "title": "开始节点",
+        "description": "开始定义输入参数",
+        "systemPrompt": "",
+        "userPrompt": "",
+        "expand": true,
+        "parameters": [
+          {
+            "id": "hd8iqRZz46gdHTGu",
+            "name": "a",
+            "required": true,
+            "defaultValue": "a1"
+          },
+          {
+            "id": "bwfmwHKorZIwqKgR",
+            "name": "b",
+            "required": false,
+            "defaultValue": "a2"
+          },
+          {
+            "id": "2XHnjhTsk7NXwm94",
+            "name": "c",
+            "required": true,
+            "defaultValue": "3",
+            "dataType": "Number"
+          }
+        ]
+      },
+      "type": "startNode",
+      "selected": false,
+      "measured": {
+        "width": 306,
+        "height": 274
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_J1Gy1pPZXhDUi2x5",
+      "position": {
+        "x": 418,
+        "y": 214
+      },
+      "data": {
+        "title": "动态代码",
+        "description": "动态执行代码",
+        "systemPrompt": "",
+        "userPrompt": "",
+        "engine": "js",
+        "expand": true,
+        "code": "let jsonData={\n'a':a+1,\n'b':b+1,\n'c':c+1\n}\n_result.put('res',jsonData)",
+        "outputDefs": [
+          {
+            "id": "rrTYHBFHbQ0tpiaU",
+            "name": "res",
+            "dataType": "Object",
+            "children": [
+              {
+                "id": "HgFRDgwUnQjC1NSU",
+                "name": "a",
+                "dataType": "String"
+              },
+              {
+                "id": "zg6WSZwNiVXzb68N",
+                "name": "b",
+                "dataType": "String"
+              },
+              {
+                "id": "JqLe4ns3GGFnRDit",
+                "name": "c",
+                "dataType": "Number"
+              }
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "id": "EjJIrEN4tKP8D5Jy",
+            "refType": "ref",
+            "name": "a",
+            "ref": "node_JuUiJQxRA5s9dA6R.a"
+          },
+          {
+            "id": "jmjFRc2HidsgH2jO",
+            "refType": "ref",
+            "name": "b",
+            "ref": "node_JuUiJQxRA5s9dA6R.b"
+          },
+          {
+            "id": "QK1l67YxI1Rk4W2x",
+            "refType": "ref",
+            "name": "c",
+            "ref": "node_JuUiJQxRA5s9dA6R.c"
+          }
+        ]
+      },
+      "type": "codeNode",
+      "selected": true,
+      "measured": {
+        "width": 322,
+        "height": 755
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_bsUTvPfxZbDOusWI",
+      "position": {
+        "x": 834,
+        "y": 214
+      },
+      "data": {
+        "title": "结束节点",
+        "description": "结束定义输出参数",
+        "systemPrompt": "",
+        "userPrompt": "",
+        "expand": true,
+        "outputDefs": [
+          {
+            "id": "Dri49TnaQqf1pKEY",
+            "refType": "ref",
+            "ref": "node_J1Gy1pPZXhDUi2x5.res.a",
+            "name": "a2"
+          },
+          {
+            "id": "2na1RukDhh1Pxmi0",
+            "refType": "ref",
+            "name": "b2",
+            "ref": "node_J1Gy1pPZXhDUi2x5.res.b"
+          },
+          {
+            "id": "fID2juAn9wVHvjUS",
+            "refType": "ref",
+            "name": "c2",
+            "ref": "node_J1Gy1pPZXhDUi2x5.res.c"
+          },
+          {
+            "id": "qHB6G5MwcLlurIrw",
+            "refType": "ref",
+            "name": "a1",
+            "ref": "node_JuUiJQxRA5s9dA6R.a"
+          },
+          {
+            "id": "XQOMqvouPgdv61Uz",
+            "refType": "ref",
+            "name": "b1",
+            "ref": "node_JuUiJQxRA5s9dA6R.b"
+          },
+          {
+            "id": "QrG2vHADCkEuWKlr",
+            "refType": "ref",
+            "name": "c3",
+            "ref": "node_JuUiJQxRA5s9dA6R.c"
+          }
+        ]
+      },
+      "type": "endNode",
+      "selected": false,
+      "measured": {
+        "width": 311,
+        "height": 371
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "source": "node_JuUiJQxRA5s9dA6R",
+      "target": "node_J1Gy1pPZXhDUi2x5",
+      "id": "xy-edge__node_JuUiJQxRA5s9dA6R-node_J1Gy1pPZXhDUi2x5",
+      "selected": false
+    },
+    {
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "source": "node_J1Gy1pPZXhDUi2x5",
+      "target": "node_bsUTvPfxZbDOusWI",
+      "id": "xy-edge__node_J1Gy1pPZXhDUi2x5-node_bsUTvPfxZbDOusWI",
+      "selected": false
+    }
+  ],
+  "viewport": {
+    "x": 327.2448184561623,
+    "y": 200.44294284874775,
+    "zoom": 0.8766057213160346
+  }
+}
