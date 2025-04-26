@@ -16,10 +16,16 @@
 package dev.tinyflow.core.parser.impl;
 
 import com.agentsflex.core.chain.ChainNode;
+import com.agentsflex.core.chain.Parameter;
+import com.agentsflex.core.chain.node.BaseNode;
 import com.agentsflex.core.chain.node.StartNode;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import dev.tinyflow.core.Tinyflow;
 import dev.tinyflow.core.parser.BaseNodeParser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StartNodeParser extends BaseNodeParser {
 
@@ -27,8 +33,40 @@ public class StartNodeParser extends BaseNodeParser {
     public ChainNode parse(JSONObject nodeJSONObject, Tinyflow tinyflow) {
         StartNode startNode = new StartNode();
         JSONObject data = getData(nodeJSONObject);
-        startNode.setName(data.getString("label"));
+        startNode.setName(data.getString("title"));
         addParameters(startNode, data);
         return startNode;
+    }
+
+    public void addParameters(BaseNode node, JSONObject data) {
+        List<Parameter> inputParameters = getParameters(data, "outputs");
+        node.setParameters(inputParameters);
+    }
+
+    // 添加新的方法来处理参数
+    public List<Parameter> getParameters(JSONObject data, String key) {
+        List<Parameter> parameters = new ArrayList<>();
+
+        // 获取 inputs 数组
+        JSONArray inputs = data.getJSONArray(key);
+        if (inputs == null) {
+            return parameters;
+        }
+
+        // 遍历 inputs 数组
+        for (int i = 0; i < inputs.size(); i++) {
+            JSONObject inputObj = inputs.getJSONObject(i);
+            String name = inputObj.getString("name");
+            JSONObject input = inputObj.getJSONObject("input");
+
+            Parameter parameter = new Parameter();
+            parameter.setName(name);
+            // 可以根据需要设置其他参数属性
+            // parameter.setValue(input.getJSONObject("value").getString("content"));
+
+            parameters.add(parameter);
+        }
+
+        return parameters;
     }
 }

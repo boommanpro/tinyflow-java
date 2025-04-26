@@ -41,7 +41,7 @@ public class ChainParser {
 
     private void initDefaultParsers() {
         nodeParserMap.put("startNode", new StartNodeParser());
-        nodeParserMap.put("codeNode", new CodeNodeParser());
+        nodeParserMap.put("code", new CodeNodeParser());
 
         nodeParserMap.put("httpNode", new HttpNodeParser());
         nodeParserMap.put("knowledgeNode", new KnowledgeNodeParser());
@@ -79,7 +79,7 @@ public class ChainParser {
     }
 
     public Chain parse(Tinyflow tinyflow, JSONArray nodes, JSONArray edges, JSONObject parentNode) {
-        if (CollectionUtil.noItems(nodes) || CollectionUtil.noItems(edges)) {
+        if (CollectionUtil.noItems(nodes)) {
             return null;
         }
 
